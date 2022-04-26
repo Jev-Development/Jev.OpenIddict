@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{413A127B-EFAF-4E62-8894-51F2E8F69F46}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{FEF10761-E06E-46A1-B783-606E5C1F8E09}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jev.OpenIddict.Web", "src\Apps\Jev.OpenIddict.Web\Jev.OpenIddict.Web.csproj", "{AB7B198D-285F-46A5-91CE-E6B684DFD201}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{180E0F2B-7575-464B-9AE3-36906115B439}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EA844F36-F638-45EB-9B3F-497039F88096}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitignore = .gitignore
+		Dockerfile = Dockerfile
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jev.OpenIddict.Entities", "src\Persistence\Jev.OpenIddict.Entities\Jev.OpenIddict.Entities.csproj", "{89BDBF4C-544F-4610-9012-7122265E4DDA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jev.OpenIddict.Migrations", "src\Persistence\Jev.OpenIddict.Migrations\Jev.OpenIddict.Migrations.csproj", "{5E3EF084-34F7-46D7-B105-BEEC468E6C4E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B9A488D8-920A-4BF0-9977-A94F0569D825}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jev.OpenIddict.Domain", "src\Domain\Jev.OpenIddict.Domain\Jev.OpenIddict.Domain.csproj", "{0A03D3DF-A823-4DC7-9954-54E932349045}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{50A98E86-1F35-4CFC-A360-0D1604519CBE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jev.OpenIddict.Infrastructure", "src\Infrastructure\Jev.OpenIddict.Infrastructure\Jev.OpenIddict.Infrastructure.csproj", "{C9AB85FC-6D98-405F-A709-C652DBA391EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{87AF2ECA-CF12-4D4A-B03A-3AECB0427F30}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jev.OpenIddict.Core", "src\Core\Jev.OpenIddict.Core\Jev.OpenIddict.Core.csproj", "{B9E7D961-4B15-41B0-970B-D56811EB6980}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB7B198D-285F-46A5-91CE-E6B684DFD201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB7B198D-285F-46A5-91CE-E6B684DFD201}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB7B198D-285F-46A5-91CE-E6B684DFD201}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB7B198D-285F-46A5-91CE-E6B684DFD201}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89BDBF4C-544F-4610-9012-7122265E4DDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89BDBF4C-544F-4610-9012-7122265E4DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89BDBF4C-544F-4610-9012-7122265E4DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89BDBF4C-544F-4610-9012-7122265E4DDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E3EF084-34F7-46D7-B105-BEEC468E6C4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E3EF084-34F7-46D7-B105-BEEC468E6C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E3EF084-34F7-46D7-B105-BEEC468E6C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E3EF084-34F7-46D7-B105-BEEC468E6C4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A03D3DF-A823-4DC7-9954-54E932349045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A03D3DF-A823-4DC7-9954-54E932349045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A03D3DF-A823-4DC7-9954-54E932349045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A03D3DF-A823-4DC7-9954-54E932349045}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9AB85FC-6D98-405F-A709-C652DBA391EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9AB85FC-6D98-405F-A709-C652DBA391EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9AB85FC-6D98-405F-A709-C652DBA391EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9AB85FC-6D98-405F-A709-C652DBA391EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9E7D961-4B15-41B0-970B-D56811EB6980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9E7D961-4B15-41B0-970B-D56811EB6980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9E7D961-4B15-41B0-970B-D56811EB6980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9E7D961-4B15-41B0-970B-D56811EB6980}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FEF10761-E06E-46A1-B783-606E5C1F8E09} = {413A127B-EFAF-4E62-8894-51F2E8F69F46}
+		{AB7B198D-285F-46A5-91CE-E6B684DFD201} = {FEF10761-E06E-46A1-B783-606E5C1F8E09}
+		{180E0F2B-7575-464B-9AE3-36906115B439} = {413A127B-EFAF-4E62-8894-51F2E8F69F46}
+		{89BDBF4C-544F-4610-9012-7122265E4DDA} = {180E0F2B-7575-464B-9AE3-36906115B439}
+		{5E3EF084-34F7-46D7-B105-BEEC468E6C4E} = {180E0F2B-7575-464B-9AE3-36906115B439}
+		{B9A488D8-920A-4BF0-9977-A94F0569D825} = {413A127B-EFAF-4E62-8894-51F2E8F69F46}
+		{0A03D3DF-A823-4DC7-9954-54E932349045} = {B9A488D8-920A-4BF0-9977-A94F0569D825}
+		{50A98E86-1F35-4CFC-A360-0D1604519CBE} = {413A127B-EFAF-4E62-8894-51F2E8F69F46}
+		{C9AB85FC-6D98-405F-A709-C652DBA391EC} = {50A98E86-1F35-4CFC-A360-0D1604519CBE}
+		{87AF2ECA-CF12-4D4A-B03A-3AECB0427F30} = {413A127B-EFAF-4E62-8894-51F2E8F69F46}
+		{B9E7D961-4B15-41B0-970B-D56811EB6980} = {87AF2ECA-CF12-4D4A-B03A-3AECB0427F30}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {59F54050-A1F7-41B5-A788-94A047A4FA25}
+	EndGlobalSection
+EndGlobal

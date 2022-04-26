@@ -1,0 +1,23 @@
+.full-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .body {
+    flex-grow: 1;
+    overflow:auto;
+  }
+
+  .footer {
+    height: 100px;
+    display: flex;
+
+    p {
+      font-weight: 100;
+      letter-spacing: 15px;
+      flex: 1;
+      line-height: 25px;
+      text-align: center;
+    }
+  }
+}
