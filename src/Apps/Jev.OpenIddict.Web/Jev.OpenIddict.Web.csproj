@@ -1,33 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>608557e9-2cf7-4eb9-8d1a-d9f60260f378</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..\..</DockerfileContext>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Version>1.0.0-dev</Version>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
-    <PackageReference Include="MediatR" Version="10.0.1" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+		<PackageReference Include="MediatR" Version="10.0.1" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.3">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.3" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Core\Jev.OpenIddict.Core\Jev.OpenIddict.Core.csproj" />
-    <ProjectReference Include="..\..\Domain\Jev.OpenIddict.Domain\Jev.OpenIddict.Domain.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\Jev.OpenIddict.Infrastructure\Jev.OpenIddict.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\Persistence\Jev.OpenIddict.Entities\Jev.OpenIddict.Entities.csproj" />
-    <ProjectReference Include="..\..\Persistence\Jev.OpenIddict.Migrations\Jev.OpenIddict.Migrations.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Core\Jev.OpenIddict.Core\Jev.OpenIddict.Core.csproj" />
+		<ProjectReference Include="..\..\Domain\Jev.OpenIddict.Domain\Jev.OpenIddict.Domain.csproj" />
+		<ProjectReference Include="..\..\Infrastructure\Jev.OpenIddict.Infrastructure\Jev.OpenIddict.Infrastructure.csproj" />
+		<ProjectReference Include="..\..\Persistence\Jev.OpenIddict.Entities\Jev.OpenIddict.Entities.csproj" />
+		<ProjectReference Include="..\..\Persistence\Jev.OpenIddict.Migrations\Jev.OpenIddict.Migrations.csproj" />
+	</ItemGroup>
 
 </Project>
