@@ -20,13 +20,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        
-      - name: Get version
+
+      - name: Get Version
+        uses: kzrnm/get-net-sdk-project-versions-action@v1.1.1
         id: package_version
-        uses: KageKirin/get-csproj-version@v1.0.0
         with:
-          file: src/Apps/Jev.OpenIddict.Web/Jev.OpenIddict.Web.csproj
-          regex: ^[\d]+.[\d]+.[\d]+((-dev){1}){0,1}$
+          proj-path: src/Apps/Jev.OpenIddict.Web/Jev.OpenIddict.Web.csproj
 
       - name: Install cosign
         if: github.event_name != 'pull_request'
