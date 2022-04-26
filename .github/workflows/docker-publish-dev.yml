@@ -28,12 +28,6 @@ jobs:
         with:
           proj-path: src/Apps/Jev.OpenIddict.Web/Jev.OpenIddict.Web.csproj
 
-      - name: Install cosign
-        if: github.event_name != 'pull_request'
-        uses: sigstore/cosign-installer@d6a3abf1bdea83574e28d40543793018b6035605
-        with:
-          cosign-release: 'v1.7.1'
-
       - name: Log into registry ${{ env.REGISTRY }}
         if: github.event_name != 'pull_request'
         uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
@@ -49,9 +43,3 @@ jobs:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/${{ env.OWNER }}/${{ env.IMAGE_NAME }}:${{ steps.package_version.outputs.version }}-${{ github.run_number }}
-
-      - name: Sign the published Docker image
-        if: ${{ github.event_name != 'pull_request' }}
-        env:
-          COSIGN_EXPERIMENTAL: "true"
-        run: cosign sign ${{ env.REGISTRY }}/${{ env.OWNER }}/${{ env.IMAGE_NAME }}@${{ steps.build-and-push.outputs.digest }}
