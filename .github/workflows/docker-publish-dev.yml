@@ -50,7 +50,7 @@ jobs:
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: ${{ steps.package_version.version  }}-${{ github.run_number }}
+          tags: ${{ steps.package_version.outputs.version  }}-${{ github.run_number }}
 
       - name: Build and push Docker image
         id: build-and-push
@@ -58,7 +58,7 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.package_version.version }}-${{ github.run_number }}
+          tags: ${{ steps.package_version.outputs.version }}-${{ github.run_number }}
 
       - name: Sign the published Docker image
         if: ${{ github.event_name != 'pull_request' }}
