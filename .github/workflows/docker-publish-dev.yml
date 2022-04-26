@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  OWNER: Jev-Development
+  OWNER: jev-development
   IMAGE_NAME: jev-openiddict
 
 
