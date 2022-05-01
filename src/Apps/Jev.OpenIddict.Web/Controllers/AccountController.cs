@@ -1,7 +1,9 @@
-﻿using Jev.OpenIddict.Domain.Dto;
+﻿using Jev.OpenIddict.Domain.Configuration;
+using Jev.OpenIddict.Domain.Dto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Security;
 
 namespace Jev.OpenIddict.Web.Controllers
@@ -21,10 +23,13 @@ namespace Jev.OpenIddict.Web.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
 
-        public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        private readonly AppOptions _appOptions;
+
+        public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IOptions<AppOptions> options)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _appOptions = options.Value ?? throw new ArgumentNullException(nameof(options));
         }
 
         [AllowAnonymous]
@@ -41,7 +46,7 @@ namespace Jev.OpenIddict.Web.Controllers
             await _signInManager.SignInAsync(user, rememberMe == "on");
 
             if (signInResult.Succeeded)
-                return Request.Query.Any(query => query.Key == ReturnUrlKey) ? Redirect(Request.Query[ReturnUrlKey]) : Redirect($"/");
+                return Request.Query.Any(query => query.Key == ReturnUrlKey) ? Redirect(Request.Query[ReturnUrlKey]) : Redirect($"{_appOptions.BasePath}");
             else
                 return Unauthorized();
         }
@@ -58,7 +63,7 @@ namespace Jev.OpenIddict.Web.Controllers
         public async Task<IActionResult> LogoutAsync()
         {
             await _signInManager.SignOutAsync();
-            return Redirect($"/{SignInPath}");
+            return Redirect($"{_appOptions.BasePath}/{SignInPath}");
         }
 
         [AllowAnonymous]

@@ -1,6 +1,7 @@
 ﻿
 using Jev.OpenIddict.Core.Mappers;
 using Jev.OpenIddict.Core.OpenIddict.Applications;
+using Jev.OpenIddict.Domain.Configuration;
 using Jev.OpenIddict.Entities;
 using Jev.OpenIddict.Web.Controllers;
 using MediatR;
@@ -102,6 +103,13 @@ namespace Jev.OpenIddict.Web.Extensions
         public static IServiceCollection RegisterMediatR(this IServiceCollection services)
         {
             return services.AddMediatR(typeof(ApplicationHandler).Assembly);
+        }
+
+        public static IServiceCollection RegisterOptions(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddOptions<AppOptions>(nameof(AppOptions));
+
+            return services;
         }
     }
 }

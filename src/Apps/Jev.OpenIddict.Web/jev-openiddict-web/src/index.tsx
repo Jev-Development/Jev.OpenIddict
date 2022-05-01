@@ -7,9 +7,13 @@ import './index.scss';
 
 ReactDOM.render(
   <ThemeProvider breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}>
-    <BrowserRouter>
+    <BrowserRouter basename={base()}>
       <App />
     </BrowserRouter>
   </ThemeProvider>,
   document.getElementById('app-root')
 );
+
+function base(): string {
+  return document.querySelector('base')?.attributes.getNamedItem('href')?.value ?? '/';
+}

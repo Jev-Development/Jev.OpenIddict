@@ -1,9 +1,11 @@
-﻿using Jev.OpenIddict.Infrastructure.Attributes;
+﻿using Jev.OpenIddict.Domain.Configuration;
+using Jev.OpenIddict.Infrastructure.Attributes;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using OpenIddict.Abstractions;
 using OpenIddict.Core;
 using OpenIddict.EntityFrameworkCore.Models;
@@ -26,19 +28,22 @@ namespace Jev.OpenIddict.Web.Controllers
         private readonly OpenIddictApplicationManager<OpenIddictEntityFrameworkCoreApplication> _applicationManager;
         private readonly OpenIddictAuthorizationManager<OpenIddictEntityFrameworkCoreAuthorization> _authorizationManager;
         private readonly OpenIddictScopeManager<OpenIddictEntityFrameworkCoreScope> _scopeManager;
+        private readonly AppOptions _appOptions;
 
         public AuthorizationController(
             UserManager<IdentityUser> userManager,
             OpenIddictApplicationManager<OpenIddictEntityFrameworkCoreApplication> applicationManager,
             OpenIddictAuthorizationManager<OpenIddictEntityFrameworkCoreAuthorization> authorizationManager,
             SignInManager<IdentityUser> signInManager,
-            OpenIddictScopeManager<OpenIddictEntityFrameworkCoreScope> scopeManager)
+            OpenIddictScopeManager<OpenIddictEntityFrameworkCoreScope> scopeManager,
+            IOptions<AppOptions> appOptions)
         {
             _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
             _applicationManager = applicationManager ?? throw new ArgumentNullException(nameof(applicationManager));
             _authorizationManager = authorizationManager ?? throw new ArgumentNullException(nameof(authorizationManager));
             _signInManager = signInManager ?? throw new ArgumentNullException(nameof(signInManager));
             _scopeManager = scopeManager ?? throw new ArgumentNullException(nameof(scopeManager));
+            _appOptions = appOptions.Value ?? throw new ArgumentNullException(nameof(appOptions));
         }
 
         [IgnoreAntiforgeryToken]
@@ -132,7 +137,7 @@ namespace Jev.OpenIddict.Web.Controllers
                                 "Interactive user consent is required."
                         }));
                 default:
-                    return Redirect($"{ConsentPath}{Request.QueryString}");
+                    return Redirect($"{Request.PathBase}{ConsentPath}{Request.QueryString}");
             }
 
 
@@ -234,7 +239,7 @@ namespace Jev.OpenIddict.Web.Controllers
             await _signInManager.SignOutAsync();
             return SignOut(new AuthenticationProperties()
             { 
-                RedirectUri = "/"
+                RedirectUri = _appOptions.BasePath
             }, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
         }
 
