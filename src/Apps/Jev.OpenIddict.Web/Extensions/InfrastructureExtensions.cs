@@ -57,38 +57,39 @@ namespace Jev.OpenIddict.Web.Extensions
 
             services
                 .AddOpenIddict()
-                .AddCore(options =>
+                .AddCore(coreBuilder =>
                 {
-                    options.UseEntityFrameworkCore()
+                    coreBuilder.UseEntityFrameworkCore()
                         .UseDbContext<IdServerContext>();
                 })
-                .AddServer(options =>
+                .AddServer(serverBuilder =>
                 {
                     
-                    options.SetUserinfoEndpointUris("/connect/userinfo");
-                    options.SetTokenEndpointUris(AuthorizationController.ConnectTokenPath);
-                    options.SetAuthorizationEndpointUris(AuthorizationController.ConnectAuthorizePath);
-                    options.SetLogoutEndpointUris(AuthorizationController.ConnectLogoutPath);
+                    serverBuilder.SetUserinfoEndpointUris("/connect/userinfo");
+                    serverBuilder.SetTokenEndpointUris(AuthorizationController.ConnectTokenPath);
+                    serverBuilder.SetAuthorizationEndpointUris(AuthorizationController.ConnectAuthorizePath);
+                    serverBuilder.SetLogoutEndpointUris(AuthorizationController.ConnectLogoutPath);
 
                     //options.AllowClientCredentialsFlow();
-                    options.AllowAuthorizationCodeFlow();
-                    options.AllowRefreshTokenFlow();
+                    serverBuilder.AllowAuthorizationCodeFlow();
+                    serverBuilder.AllowRefreshTokenFlow();
 
-                    options.RegisterScopes(Scopes.Email, Scopes.Profile, Scopes.Roles);
+                    serverBuilder.RegisterScopes(Scopes.Email, Scopes.Profile, Scopes.Roles);
 
-                    options.AddDevelopmentEncryptionCertificate()
+                    serverBuilder.AddDevelopmentEncryptionCertificate()
                         .AddDevelopmentSigningCertificate();
 
-                    options.UseAspNetCore()
+                    serverBuilder.UseAspNetCore()
                         .EnableTokenEndpointPassthrough()
                         .EnableAuthorizationEndpointPassthrough()
                         .EnableLogoutEndpointPassthrough()
-                        .EnableStatusCodePagesIntegration();
+                        .EnableStatusCodePagesIntegration()
+                        .DisableTransportSecurityRequirement();
                 })
-                .AddValidation(options =>
+                .AddValidation(validationBuilder =>
                 {
-                    options.UseLocalServer();
-                    options.UseAspNetCore();
+                    validationBuilder.UseLocalServer();
+                    validationBuilder.UseAspNetCore();
                 });
 
 
